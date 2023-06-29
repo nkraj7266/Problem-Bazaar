@@ -2,3 +2,4 @@ scraping/
 __pycache__/
 env/
 .vscode/
+.vercel
