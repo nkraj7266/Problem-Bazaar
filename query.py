@@ -10,9 +10,9 @@ def renderProblemList(query_string, tags_query_list):
         def load_vocab():
             vocab = {}
             # opening files in read mode
-            with open('processedData/vocab.txt', 'r') as f:
+            with open('processedData/vocab.txt', 'r', encoding='latin-1') as f:
                 vocab_terms = f.readlines()
-            with open('processedData/frequencies.txt', 'r') as f:
+            with open('processedData/frequencies.txt', 'r', encoding='latin-1') as f:
                 frequencies = f.readlines()
 
             # writing data from 'vocab' & 'frequencies' to vocab dictionary
@@ -105,13 +105,11 @@ def renderProblemList(query_string, tags_query_list):
                     continue
                 tf_values_by_document = get_tf_dictionary(term, tagFilter(tags_query_list))
                 idf_value = get_idf_value(term)
-                # print(term, tf_values_by_document, idf_value) #------------------------------
                 for document in tf_values_by_document:
                     if document not in potential_documents:
                         potential_documents[document] = tf_values_by_document[document] * idf_value
                     potential_documents[document] += tf_values_by_document[document] * idf_value
 
-            # print(potential_documents) #----------------------------------
             # divide by the length of the query terms
             for document in potential_documents:
                 potential_documents[document] /= len(query_terms)
@@ -119,8 +117,7 @@ def renderProblemList(query_string, tags_query_list):
             potential_documents = dict(
                 sorted(potential_documents.items(), key=lambda item: item[1], reverse=True)) # it is a dictionary
 
-            # as we will be needing indexes only so taking indexes 
-            # return potential_documents #returns dictiinary
+            # as we will be needing indexes only so taking indexes
             potential_documents_list = []
             for document_index in potential_documents.keys():
                 potential_documents_list.append(document_index)
@@ -129,36 +126,23 @@ def renderProblemList(query_string, tags_query_list):
             # for document_index in potential_documents:
             #     print('Document: ', documents[int(document_index)], ' Score: ', potential_documents[document_index]) #------------------------
 
-
-        # query_string = input('Enter your query: ')
-        # tags_query_list = input('Enter problem tags (as a python list): ')
-        # query_string = "linked list"
-        # tags_query_list = ['hash table']
         query_terms = [term.lower() for term in query_string.strip().split()]
 
-        # check if query passed or not
-        if not query_terms:
-            # if query not passed then print by tags filter directly
-            return tagFilter(tags_query_list)
-        else:
-            # if query and tags both are passed
-            return calculate_sorted_order_of_documents(query_terms, tags_query_list)
+        return calculate_sorted_order_of_documents(query_terms, tags_query_list)
     except Exception as e:
         print(f"An error occurred while rendering the problem list: {str(e)}")
         return []
 
-# renderProblemList("two sum", ['hash table', 'trees']) # drive call
 
 def get_problems(indices):
     try:
         results = []
-        with open('data/LeetCode.csv', 'r') as csvfile:
-            reader = csv.reader(csvfile)
-            for i, row in enumerate(reader, start=1):
-                if str(i) in indices:
-                    problem_name = row[0]
-                    problem_link = row[1]
-                    results.append([problem_name, problem_link])
+        whole_list = []
+        with open('data/merged.csv', 'r') as f:
+            reader = csv.reader(f)
+            whole_list = list(reader)
+        for index in indices:
+            results.append(whole_list[int(index)])
         return results
     except Exception as e:
         print(f"An error occurred while retrieving problems: {str(e)}")
@@ -169,10 +153,12 @@ def get_problems(indices):
 def index():
     if request.method == 'POST':
         search_query = request.form['search']
-        index_list = renderProblemList(search_query, ['hash table']) # at the place of empty array tags has to be passed
+        index_list = renderProblemList(search_query, []) # at the place of empty array tags has to be passed
         results = get_problems(index_list)
         return render_template('index.html', results=results)
-    return render_template('index.html')
+    else:
+        results = []  # Initialize results as an empty list
+        return render_template('index.html', results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

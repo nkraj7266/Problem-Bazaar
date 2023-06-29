@@ -1,14 +1,14 @@
 import csv
 
-filename = 'data/LeetCode.csv'
+filename = 'data/merged.csv'
 
 lines = [] # list of documents
 tags = [] # list of tags
-with open(filename, 'r') as f:
+with open(filename, 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f)
     # reading every document and appending it to lines
     for row in csv_reader:
-        documentData = row[0]
+        documentData = row[0] + " " + row[2].replace(",", " ")
         tagsData = row[2]
         lines.append(documentData)
         tags.append(tagsData)
@@ -56,28 +56,28 @@ inverted_index = generate_inverted_index(documents)
 tags_inverted_index = generate_inverted_index(tagsDocuments)
 
 # save the vocab (only keys of vocab dictionary) in a text file
-with open('processedData/vocab.txt', 'w') as f:
+with open('processedData/vocab.txt', 'w', encoding='utf-8') as f:
     for key in vocab.keys():
         f.write("%s\n" % key)
 
 # save the frequency (only values of vocab dictionary) of tokens in a text file
-with open('processedData/frequencies.txt', 'w') as f:
+with open('processedData/frequencies.txt', 'w', encoding='utf-8') as f:
     for key in vocab.keys():
         f.write("%s\n" % vocab[key])
 
 # save the documents in a text file
-with open('processedData/documents.txt', 'w') as f:
+with open('processedData/documents.txt', 'w', encoding='utf-8') as f:
     for document in documents:
         f.write("%s\n" % ' '.join(document))
 
 # save the inverted index in a text file
-with open('processedData/inverted-index.txt', 'w') as f:
+with open('processedData/inverted-index.txt', 'w', encoding='utf-8') as f:
     for key in inverted_index.keys():
         f.write("%s\n" % key)
         f.write("%s\n" % ' '.join([str(doc_id) for doc_id in inverted_index[key]]))
 
 # save the inverted index of tags in a text file
-with open('processedData/tags-inverted-index.txt', 'w') as f:
+with open('processedData/tags-inverted-index.txt', 'w', encoding='utf-8') as f:
     for key in tags_inverted_index.keys():
         f.write("%s\n" % key)
         f.write("%s\n" % ' '.join([str(doc_id) for doc_id in tags_inverted_index[key]]))
