@@ -2,7 +2,7 @@
 
 Search Engine to Search Competitive Programming Problems
 
-Hosted App Link: https://problem-bazaar.vercel.app/
+Hosted App [Link](https://problem-bazaar.vercel.app/)
 
 ## Description
 
@@ -12,33 +12,30 @@ The app utilizes data from the LeetCode and Codeforces Problems Dataset, which i
 
 ## Features
 
--   **Efficient Problem Search:** Quickly find problems based on keywords, tags, or other specific criteria.
+- **Efficient Problem Search:** Quickly find problems based on keywords, tags, or other specific criteria.
 
--   **Data from Top Platforms:** Access problems from popular platforms like LeetCode and Codeforces.
+- **Data from Top Platforms:** Access problems from popular platforms like LeetCode and Codeforces.
 
--   **Local Development:** Easily set up and run the app locally on your machine.
+- **Local Development:** Easily set up and run the app locally on your machine.
 
 ## Setting up the Web-App Locally
 
 1. **Clone the Repository:** You can clone the repository using the following command or [download it as a ZIP file](https://github.com/nkraj7266/Problem-Bazaar/archive/refs/heads/main.zip) and extract it.
-   `git clone https://github.com/nkraj7266/Problem-Bazaar.git
-`
+``git clone https://github.com/nkraj7266/Problem-Bazaar.git``
 
 2. **Install Requirements:** Install the required Python packages by running the following command in the project directory:
-   `pip install -r requirements.txt
-`
+``pip install -r requirements.txt``
 
 3. **Run the App:** Start the app on your localhost using the following command:
-   `python app.py
-`
+``python app.py``
 
 ## Usage
 
--   **Search:** Use the search bar to enter keywords, tags, or criteria related to the problem you're looking for.
+- **Search:** Use the search bar to enter keywords, tags, or criteria related to the problem you're looking for.
 
--   **Results:** Browse the search results to find problems that match your criteria.
+- **Results:** Browse the search results to find problems that match your criteria.
 
--   **Click on a Problem:** Click on a problem to view its details and related information.
+- **Click on a Problem:** Click on a problem to view its details and related information.
 
 ## Contributing
 
@@ -48,12 +45,11 @@ Contributions are welcome! Please feel free to submit a Pull Request or open an 
 
 I would like to acknowledge the following resources and libraries that have contributed to this project:
 
--   [LeetCode Problemset](https://leetcode.com/problemset/all/)
--   [Codeforces Problemset](https://codeforces.com/problemset)
-
-[Selenium](https://selenium.dev/)
-[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
-[Flask](https://flask.palletsprojects.com/en/2.3.x/)
-[TF-IDF Algorithm](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
+- [LeetCode Problemset](https://leetcode.com/problemset/all/)
+- [Codeforces Problemset](https://codeforces.com/problemset)
+- [Selenium](https://selenium.dev/)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+- [Flask](https://flask.palletsprojects.com/en/2.3.x/)
+- [TF-IDF Algorithm](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 **Thank you for using Problem-Bazaar! I hope it enhances your competitive programming experience. Happy coding!** 😁
