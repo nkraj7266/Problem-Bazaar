@@ -20,14 +20,23 @@ The app utilizes data from the LeetCode and Codeforces Problems Dataset, which i
 
 ## Setting up the Web-App Locally
 
-1. **Clone the Repository:** You can clone the repository using the following command or [download it as a ZIP file](https://github.com/nkraj7266/Problem-Bazaar/archive/refs/heads/main.zip) and extract it.
-``git clone https://github.com/nkraj7266/Problem-Bazaar.git``
+**Clone the Repository:** You can clone the repository using the following command or [download it as a ZIP file](https://github.com/nkraj7266/Problem-Bazaar/archive/refs/heads/main.zip) and extract it.
 
-2. **Install Requirements:** Install the required Python packages by running the following command in the project directory:
-``pip install -r requirements.txt``
+```bash
+git clone https://github.com/nkraj7266/Problem-Bazaar.git
+```
 
-3. **Run the App:** Start the app on your localhost using the following command:
-``python app.py``
+**Install Requirements:** Install the required Python packages by running the following command in the project directory:
+
+```bash
+pip install -r requirements.txt
+```
+
+**Run the App:** Start the app on your localhost using the following command:
+
+```bash
+python app.py
+```
 
 ## Usage
 
