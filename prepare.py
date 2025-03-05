@@ -1,6 +1,6 @@
 import csv
 
-filename = 'data/merged.csv'
+filename = 'data/final_data.csv' # file containing the data
 
 lines = [] # list of documents
 tags = [] # list of tags
@@ -8,7 +8,7 @@ with open(filename, 'r', encoding='utf-8') as f:
     csv_reader = csv.reader(f)
     # reading every document and appending it to lines
     for row in csv_reader:
-        documentData = row[0] + " " + row[2].replace(",", " ")
+        documentData = row[0] + " " + row[2].replace(",", " ") + " " + row[4]
         tagsData = row[2]
         lines.append(documentData)
         tags.append(tagsData)

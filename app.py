@@ -10,9 +10,9 @@ def renderProblemList(query_string, tags_query_list):
         def load_vocab():
             vocab = {}
             # opening files in read mode
-            with open('processedData/vocab.txt', 'r', encoding='latin-1') as f:
+            with open('processedData/vocab.txt', 'r', encoding='utf-8', errors='ignore') as f:
                 vocab_terms = f.readlines()
-            with open('processedData/frequencies.txt', 'r', encoding='latin-1') as f:
+            with open('processedData/frequencies.txt', 'r', encoding='utf-8', errors='ignore') as f:
                 frequencies = f.readlines()
 
             # writing data from 'vocab' & 'frequencies' to vocab dictionary
@@ -25,7 +25,7 @@ def renderProblemList(query_string, tags_query_list):
         def load_documents():
             documents = []
             # opening documents file in read mode
-            with open('processedData/documents.txt', 'r') as f:
+            with open('processedData/documents.txt', 'r', encoding='utf-8', errors='ignore') as f:
                 documents = f.readlines()
             # appending list of of tokens of a document to documents list (creating a list of lists)
             documents = [document.strip().split() for document in documents]
@@ -35,7 +35,7 @@ def renderProblemList(query_string, tags_query_list):
         def load_inverted_index(fileName):
             inverted_index = {}
             # opening 'inverted-index' file in read mode
-            with open(fileName, 'r') as f:
+            with open(fileName, 'r', encoding='utf-8', errors='ignore') as f:
                 inverted_index_terms = f.readlines()
 
             # separting token (key) and string of indexes as list of indexes (values)
@@ -99,7 +99,6 @@ def renderProblemList(query_string, tags_query_list):
         # sorted order of found potential documents on the basis of tf-idf value
         def calculate_sorted_order_of_documents(query_terms, tags_query_list):
             potential_documents = {}
-
             for term in query_terms:
                 if vocab_idf_values[term] == 0:
                     continue
@@ -138,7 +137,7 @@ def get_problems(indices):
     try:
         results = []
         whole_list = []
-        with open('data/merged.csv', 'r') as f:
+        with open('data/final_data.csv', 'r', encoding='utf-8', errors='ignore') as f:
             reader = csv.reader(f)
             whole_list = list(reader)
         for index in indices:
